@@ -1,0 +1,21 @@
+<mat-card class="card-products">
+  <mat-card-header class="card-products-header">
+    <div *ngIf="">
+
+    </div>
+    <mat-card-title> {{ product.fields.name }} </mat-card-title>
+    <mat-card-subtitle>
+      <div *ngIf="category"> Categoria: {{ category.fields.name }} </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="image">
+    <img mat-card-image [src]="product.fields.image[0].url" alt="">
+  </div>
+  <mat-card-content class="icons">
+    <!--<button class="button" (click)="addProduct(product)"> <img src="./../assets/img/carrito-mas.svg" alt=""></button>-->
+    <!--<button class="button"> <img src="./../assets/img/carrito-menos.svg" alt=""> </button>-->
+    <!-- <button class="button"> <img class="lol" src="./../assets/img/favorite.svg" alt=""> </button> -->
+    <!-- <button class="button" (click)="dialogBox.openDialog(dialog)"> <img src="./../assets/img/lupa.svg" alt=""> </button>-->
+    <!-- <p> {{ product.fields.description }} </p> -->
+  </mat-card-content>
+</mat-card>

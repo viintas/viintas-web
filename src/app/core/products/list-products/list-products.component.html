@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <h1 class="title">Productos de Viintas</h1>
+  <div class="row">
+    <div class="col-8">
+      <div class="row" *ngIf="categories && products">
+        <app-product-card
+          class="col-3"
+          *ngFor="let product of products; let i=index"
+          [product]="product"
+          [category]="getCategory(product)"
+          >
+        </app-product-card>
+      </div>
+    </div>
+    <div class="col-3 car">
+      <!-- <app-shopping-cart [listProductsSelected]="listProductsSelected" ></app-shopping-cart> -->
+    </div>
+  </div>
+</div>
