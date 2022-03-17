@@ -16,7 +16,7 @@ export class ProductsService {
   });
 
   getProductsById(id: string) {
-    return this.http.get<any>(`${this.url}/Products/${id}`, { headers: this.headers })
+    return this.http.get<any>(`${this.url}/Products/?view=Catálogo${id}`, { headers: this.headers })
   }
 
   getProducts() {
