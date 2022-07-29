@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
+html, body { height: 100%; }
+
+body { margin: 0;padding: 0; }
+/*===== VARIABLES CSS =====*/
+:root {
+    /*===== Colores =====*/
+    --primary-color:#3f559e;
+    --primary-color-dark:#132c7e;
+    --primary-color-light:#6576ac;
+    --primary-color-background:#d6d9e2;
+    --primary-color-80:rgba(63, 85, 158, 0.8);
+
+    --first-color: #c71c81;
+    --first-color-light: #c55898;
+    --first-color-50: rgba(199, 28, 128, 0.5);
+    --second-color: #3f559e;
+    --second-color-light: #6576ac;
+    --second-color-90: rgba(63, 85, 158, 0.9);
+    --degrade-all-colors-50:linear-gradient(90deg, rgba(63, 85, 158, 0.5) 12.71%, rgba(115, 63, 147, 0.5) 52.75%, rgba(199, 28, 128, 0.5) 100%);
+    --white-color: #ffffff;
+    --dark-color: #000000;
+    --dark-color-lighten: #F2F5FF;
+    --grey-color-ligth:rgb(238, 238, 238);
+    --primary-gradient:linear-gradient(90deg, #3F559E 12.71%, #733F93 52.75%, #C71C81 100%);
+    --primary-gradient-80:linear-gradient(90deg, rgba(63, 85, 158, 0.8) 12.71%, rgba(115, 63, 147, 0.8) 52.75%, rgba(199, 28, 128, 0.8) 100%);
+    /*==== Others Components  ====*/
+    --box-shadow:2px 2px 3px rgba(92, 92, 92, 0.4);
+
+    /*===== Fuente y tipografia =====*/
+    --body-font: 'Yanone Kaffeesatz', sans-serif;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+}

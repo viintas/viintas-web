@@ -1,0 +1,54 @@
+.stepper {
+    width: 50%;
+    border-radius: 1rem;
+    display: block;
+    margin: 5rem auto;
+    padding: 3rem;
+    background-color: var(--primary-color);
+}
+
+/*Color icons*/
+::ng-deep .mat-step-icon-selected {
+    background-color: var(--primary-color-light) !important;
+}
+
+/*Color icons edit*/
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: var(--primary-color-light) !important;
+}
+
+/*Underline focus*/
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: var(--primary-color) !important;
+}
+
+/*Text form*/
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label,
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker,
+::ng-deep .mat-form-field-hide-placeholder
+{
+    color: var(--white-color);
+}
+/*Button next*/
+.button-next{
+    border: solid 1px var(--white-color);
+    color: var(--white-color);
+    background-color: var(--primary-color-dark);
+    margin-right:1rem ;
+    width: 20%;
+    margin-left: auto;
+}
+.title{
+    /* color: var(--white-color); */
+}
+.hr{
+    color: var(--white-color);
+    /* background-color: var(--white-color); */
+}
+@media (max-width:700px){
+    .stepper{
+        width: 90%;
+        padding: 1rem;
+    }
+}
+@media (max-width:1024px){}

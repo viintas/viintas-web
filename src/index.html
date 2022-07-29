@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ViintasWeb</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="mat-typography">
+
+  <app-root></app-root>
+</body>
+
+<script>
+  let r = document.querySelector(':root');
+
+  function changeColor(primary, dark, light, background, primary80) {
+    r.style.setProperty('--primary-color', primary);
+    r.style.setProperty('--primary-color-dark', dark);
+    r.style.setProperty('--primary-color-light', light);
+    r.style.setProperty('--primary-color-background', background);
+    r.style.setProperty('--primary-color-80', primary80);
+  }
+
+  window.addEventListener('scroll', function () {
+    let elements = document.getElementsByClassName('scroll-content');
+    let screenSize = window.innerHeight;
+     for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+
+      if (element.getBoundingClientRect().top < screenSize) {
+        element.classList.add('scroll-nav');
+      } else {
+        element.classList.remove('scroll-nav');
+      }
+
+    }
+  });
+
+</script>
+
+</html>

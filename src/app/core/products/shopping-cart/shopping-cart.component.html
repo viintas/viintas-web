@@ -1,0 +1,69 @@
+<div class="container-fluid shopping-card">
+    <div class="wave">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+            <path class="path-wave"
+                d="M22.29,-6.39 C-25.11,74.52 55.58,89.31 17.77,151.48 L500.00,150.00 L500.00,0.00 Z"
+                style="stroke: none;"></path>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="shopping-logo">
+            <!-- <img class="logo" src="./../../../../assets/img/logo-viintas.png" alt="" srcset=""> -->
+            <span class="name">viintas</span>
+        </div>
+        <div class="col-12 shopping-container">
+            <div class="shopping-products">
+                <div class="row">
+                    <div *ngFor="let product of listProductsShopping; let i=index" class="col-10 card-product">
+                        <span class="img-close">
+                            <img src="./../../../../assets/img/red-x.webp" alt="">
+                        </span>
+                        <div class="row">
+                            <div class="col-5">
+                                <img class="product-image" [src]="product.image" alt="">
+                            </div>
+                            <div class="col-7 content-card-product">
+                                <p class="text-card-product">{{ product.name }}</p>
+                                <p class="price-card-product"> $ {{ product.pvp_unitary }}</p>
+                                <hr>
+                                <div class="count-content">
+                                    <button class="button">
+                                        <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect class="icon-fill" y="6" width="6" height="25"
+                                                transform="rotate(-90 0 6)" />
+                                        </svg>
+                                    </button>
+                                    <span class="count">
+                                        <input type="number" class="input_card" [ngModel]="product.amount">
+                                    </span>
+                                    <button class="button">
+                                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect class="icon-fill" x="9" width="6" height="25" fill="#c71c81" />
+                                            <rect class="icon-fill" y="16" width="6" height="25"
+                                                transform="rotate(-90 0 16)" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shopping-price">
+                <div class="row">
+                    <div class="col-7 price-total">
+                        <p>SubTotal:</p>
+                    </div>
+                    <div class="col-3 price-total">
+                        <span>$1800.00</span>
+                    </div>
+                    <div class="col-12 button-buy">
+                        <button routerLink="/pago">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

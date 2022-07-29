@@ -1,0 +1,21 @@
+<div class="container-fluid list">
+    <div class="row">
+        <p class="title-list-products">Lista de productos</p>
+        <div class="col-12 content-list">
+            <div class="product" *ngFor="let item of newArray(10); let i=index">
+                <img class="img-product" src="./../../../../assets/img/productToWeek.svg" alt="" srcset="">
+                <p class="name-product">Osito Panda</p>
+                <p class="price-product">$ 20.000</p>
+                <p class="cant-product">x1</p>
+                <img (click)="alertDelete()" class="close" src="./../../../../assets/img/message-square-x-solid-24.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid total">
+    <div class="row">
+        <div class=" col-12">
+            <p>Total: $20000</p>
+        </div>
+    </div>
+</div>

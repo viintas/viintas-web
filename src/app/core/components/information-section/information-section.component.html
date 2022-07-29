@@ -1,0 +1,23 @@
+<article class="container-fluid">
+    <div id="cuenta" class="cuenta" name="cuenta"></div>
+    <h4 class="title">Conoce un poco más de nosotros</h4>
+    <!-- data-aos="fade-up" data-aos-duration="1500" data-aos-easing="linear" // h4 -->
+    <div class="section row">
+        <section class="info col-12 col-md-4" *ngFor="let element of information;">
+            <!-- data-aos="fade-up" data-aos-duration="1500" // section -->
+            <div class="icon">
+                <img [src]="element.img" style="color: red;" alt="" srcset="">
+                <!-- <object data="./../../../../assets/img/wholesale.svg" style="color: red;fill:red; p"></object> -->
+                <!-- <svg>
+                    <use xlink:href="./../../../../assets/img/wholesale.svg#cuadrado"></use>
+                </svg> -->
+                <!-- <object id="diagrama" width="300" height="300" type="image/svg+xml" data="./../../../../assets/img/wholesale.svg"
+                    ></object> -->
+            </div>
+            <div class="text">
+                <span class="title-text">{{ element.title }}</span>
+                {{ element.paragraph }}
+            </div>
+        </section>
+    </div>
+</article>

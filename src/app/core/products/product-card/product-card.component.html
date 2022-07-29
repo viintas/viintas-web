@@ -1,0 +1,99 @@
+<div class="container_">
+  <!-- *ngIf="product.fields.status == 'Seleccionado'" -->
+  <div class="card_">
+    <img [src]="product.fields.image[0].url" alt="" class="card-img">
+    <div class="card-data">
+      <h1 class="card-title">{{ product.fields.name }}</h1>
+      <span class="card-preci">$ {{ product.fields.pvp_unitary }}</span>
+      <!-- <p class="card-description">{{ product.fields.description }}</p> -->
+      <!-- <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel labore aliquid doloribus
+        nulla ipsa cumque explicabo omnis commodi repellendus distinctio!</p> -->
+      <!-- <a href="#" class="card-button">Buy Now</a> -->
+      <a (click)="dialogBox.openDialog(dialog,'60vw','80%')" class="content-see-more">
+        <svg class="see-more" width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="see-more-path"
+            d="M12.5 22.5C14.8075 22.5 16.9288 21.7063 18.6213 20.39L24.1163 25.885L25.8838 24.1175L20.3888 18.6225C21.7063 16.9287 22.5 14.8075 22.5 12.5C22.5 6.98625 18.0138 2.5 12.5 2.5C6.98625 2.5 2.5 6.98625 2.5 12.5C2.5 18.0137 6.98625 22.5 12.5 22.5ZM12.5 5C16.6363 5 20 8.36375 20 12.5C20 16.6363 16.6363 20 12.5 20C8.36375 20 5 16.6363 5 12.5C5 8.36375 8.36375 5 12.5 5Z"
+            fill="#fff" />
+          <path class="see-more-path"
+            d="M14.265 10.7326C14.7388 11.2076 15 11.8351 15 12.5001H17.5C17.5 11.1689 16.98 9.91386 16.0325 8.96511C14.14 7.07511 10.8588 7.07511 8.96753 8.96511L10.7325 10.7351C11.6825 9.78761 13.32 9.79011 14.265 10.7326Z"
+            fill="#fff" />
+        </svg>
+      </a>
+      <div class="card-button">
+        <button class="button" (click)="subtractAmount()">
+          <svg width="25" height="25" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
+          </svg>
+        </button>
+        <span class="count">
+          <input type="number" class="input_card" [ngModel]="cantProduct">
+        </span>
+        <button class="button" (click)="addAmount()">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="icon-fill" x="9" width="6" height="25" fill="#c71c81" />
+            <rect class="icon-fill" y="16" width="6" height="25" transform="rotate(-90 0 16)" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #dialog>
+  <div class="modal_">
+    <div class="row">
+      <div class="col-5 content-product">
+        <!-- <img src="assets/img/gradient-back.png" alt="" class="background"> -->
+        <p class="title_product"> {{ product.fields.name }} </p>
+        <!-- <hr class="hr-desc"> -->
+        <div class="content">
+          <p class="price-unit"> $ {{ product.fields.pvp_unitary }}</p>
+          <!-- (más de seis productos): -->
+          <p class="price_whol">Al por mayor: $ {{ product.fields.pvp_wholesale }}</p>
+          <p class="description"> {{ product.fields.description }} </p>
+          <div class="count_button">
+            <button class="button" (click)="subtractAmount()">
+              <svg width="25" height="25" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
+              </svg>
+            </button>
+            <span class="count">
+              <input type="number" class="input_card" [ngModel]="cantProduct">
+            </span>
+            <button class="button" (click)="addAmount()">
+              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect class="icon-fill" x="9" width="6" height="25" fill="#c71c81" />
+                <rect class="icon-fill" y="16" width="6" height="25" transform="rotate(-90 0 16)" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- <button class="button-add button-desc btn-price btn1">Añadir al carrito</button>
+        <button class="button-buy button-desc btn-price btn2">Comprar ahora</button> -->
+        <a class=" btn-product btn3">Añadir al carrito</a>
+        <a class=" btn-product btn4">Comprar ahora</a>
+      </div>
+      <div class="col-7 cont-image">
+        <!-- <img class="image-circle" src="./../../../../assets/img/Group.svg" alt=""> -->
+        <span class="name">viintas</span>
+        <img class="image-product" mat-card-image [src]="product.fields.image[0].url" alt="Photo of a Shiba Inu">
+        <div class="more-images">
+          <div class="option-images">
+            <img mat-card-image [src]="product.fields.image[0].url">
+          </div>
+          <div class="option-images">
+            <img mat-card-image [src]="product.fields.image[0].url">
+          </div>
+          <div class="option-images">
+            <img mat-card-image [src]="product.fields.image[0].url">
+          </div>
+          <div class="option-images">
+            <img mat-card-image [src]="product.fields.image[0].url">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions> -->
+</ng-template>
