@@ -1,0 +1,108 @@
+<nav class="navbar fixed-top navbar-light navbar-expand-lg scroll-content" #myNameElem>
+    <div class="container-fluid">
+        <a href="#" class="section-nav">
+            <img src="./../../../../assets/img/logo-viintas.png" alt="" width="150" height="50">
+        </a>
+        <a class="icon-shopping" routerLink="/list" href="">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+                <g id="_01_align_center" data-name="01 align center">
+                    <path
+                        d="M24,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836ZM20.164,13H5.419L4.478,5H21.607Z" />
+                    <circle cx="7" cy="22" r="2" />
+                    <circle cx="17" cy="22" r="2" />
+                </g>
+            </svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li class="nav-item mx-3">
+                    <a routerLink="/list" class="nav-link" aria-current="page" href="">Inicio</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a routerLink="/list" class="nav-link" aria-current="page" href="">Acerca de nosotros</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a routerLink="/list" class="nav-link" aria-current="page" href="">Productos</a>
+                </li>
+                <li class="nav-item dropdown mx-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Elige un color
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <li>
+                            <mat-slide-toggle class="slide-toggle" [color]="color" [checked]="checked"
+                                [disabled]="disabled">
+                                Slide me!
+                            </mat-slide-toggle>
+                        </li> -->
+                        <li>
+                            <a class="uno dropdown-item"
+                                onclick="changeColor('#3f559e','#132c7e','#6576ac','#d6d9e2','rgba(63, 85, 158, 0.8)')"></a>
+                        </li>
+                        <li>
+                            <a class="dos dropdown-item"
+                                onclick="changeColor('#c71c81','#a30160','#d463a5','#e2cfda','rgba(199, 28, 128, 0.8)')"></a>
+                        </li>
+                        <li>
+                            <a class="tres dropdown-item"
+                                onclick="changeColor('#3fcc5b','#07a326','#84d494','#cae4cf','rgba(132, 212, 148, 0.8)')"></a>
+                        </li>
+                        <li>
+                            <a class="cuatro dropdown-item"
+                                onclick="changeColor('#cf8f40','#b86909','#caa980','#e6d1b8','rgba(207, 143, 64, 0.8)')"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item mx-3">
+                    <a routerLink="/list" class="nav-link" aria-current="page" href="">Productos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- <nav class="navbar">
+    <img src="./../../../../assets/img/logo-viintas.png" alt="" width="150" height="50">
+    <div class="sub-container sub-container-before">
+        <ul class="list nav-after nav-before ">
+            <li>
+                <a href="">
+                    Incio
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Acerca
+                </a>
+            </li>
+            <li>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>dialpad</mat-icon>
+                        <span>Redial</span>
+                    </button>
+                    <button mat-menu-item disabled>
+                        <mat-icon>voicemail</mat-icon>
+                        <span>Check voice mail</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>notifications_off</mat-icon>
+                        <span>Disable alerts</span>
+                    </button>
+                </mat-menu>
+            </li>
+            <li>
+                <a href="">
+                    <img src="./../../../../assets/img/carrito-de-compras.svg" alt="" srcset="">
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav> -->

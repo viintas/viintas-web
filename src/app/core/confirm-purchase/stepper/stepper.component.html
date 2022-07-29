@@ -1,0 +1,32 @@
+<mat-stepper class="stepper" labelPosition="bottom" #stepper>
+    <!-- <p class="title">Confirma tu información de compra</p> -->
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Listado de productos</ng-template>
+            <app-list></app-list>
+            <hr class="hr">
+            <div>
+                <button class="button-next" mat-button matStepperNext>Continuar</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Confirmación de datos</ng-template>
+            <app-form></app-form>
+            <hr class="hr">
+            <div>
+                <button class="button-next" mat-button matStepperPrevious>Anterior</button>
+                <button class="button-next" mat-button matStepperNext>Continuar</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Datos de envio</ng-template>
+        <p>Info de envio</p>
+        <hr class="hr">
+        <div>
+            <button class="button-next" mat-button matStepperPrevious>Anterior</button>
+        </div>
+    </mat-step>
+</mat-stepper>

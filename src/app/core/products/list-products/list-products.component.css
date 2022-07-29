@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font) !important;
+}
+
+.car {
+  /* margin:10% 0; */
+}
+
+.product {
+  float: left;
+  width: 30%;
+  margin: 0 5% 20% 10%;
+}
+
+.content-list {
+  /* margin-top: 10%; */
+  background-color: var(--primary-color-background);
+}
+
+.information {
+  background-color: var(--white-color);
+}
+
+/*List products*/
+.list-products {
+  padding: 5rem;
+
+}
+
+.title-list-products {
+  text-align: left;
+  font-size: 3rem;
+  text-transform: uppercase;
+  padding: 6rem 0;
+  margin-left: 10%;
+  line-height: 3rem;
+}
+
+/*Mini shopping car*/
+.mini-shopping-car {
+  background-color: var(--primary-color);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  right: 0;
+  margin: 3%;
+  position: fixed;
+  top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* animation: shopping-car 3s infinite ease-in alternate-reverse; */
+}
+
+.mini-shopping-car:hover {
+  transform: scale(1.1);
+  transition: all .1s ease-in;
+  box-shadow: 0px 0px 15px var(--primary-color);
+}
+
+.mini-shopping-car img {
+  width: 50%;
+  display: block;
+  margin: auto;
+}
+
+/*Animation mini car*/
+.animation-mini-car {
+  -webkit-animation: animar .6s linear;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px var(--primary-color);
+}
+
+@keyframes animar {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+  }
+
+  10% {
+    -webkit-transform: translate(5px, 0px);
+  }
+
+  20% {
+    -webkit-transform: translate(0px, 0px);
+  }
+
+  30% {
+    -webkit-transform: translate(5px, 0px);
+  }
+
+  40% {
+    -webkit-transform: translate(0px, 0px);
+  }
+
+  50% {
+    -webkit-transform: translate(5px, 0px);
+  }
+
+  60% {
+    -webkit-transform: translate(0px, 0px);
+  }
+
+  70% {
+    -webkit-transform: translate(5px, 0px);
+  }
+
+  80% {
+    -webkit-transform: translate(0px, 0px);
+  }
+
+  90% {
+    -webkit-transform: translate(5px, 0px);
+  }
+
+  100% {
+    -webkit-transform: translate(0px, 0px);
+  }
+}
+
+/* @media (max-width:px) {
+  .title-list-products {
+    width: 80%;
+    text-align: center;
+    padding: 5.5rem 0 2rem;
+  }
+  .product {
+    float: left;
+    width: 30%;
+    margin: 0 auto 5rem;
+  }
+} */
+@media (max-width:992px) {
+  .title-list-products {
+    width: 80%;
+    text-align: center;
+    padding: 5.5rem 0 2rem;
+  }
+
+  .product {
+    float: left;
+    width: 80%;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+  }
+
+  /* .car{
+    width: 40vw;
+  } */
+}
+/* @media (min-width:992px){
+  .product {
+    width: 100%;
+  }
+} */
