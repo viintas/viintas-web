@@ -11,9 +11,9 @@ import { DialogBox } from '../../shared/utils/dialogbox.service';
 })
 export class ProductToWeekComponent implements OnInit {
 
-  cantProduct: number = 0;
-  listProducts: Product[] = [];
   productWeekly: any;
+  priceDescountProduct: number = 0;
+  loader: boolean = false;
 
   number_week = new Date;
   days: number = 7 - this.number_week.getDay();
@@ -21,58 +21,48 @@ export class ProductToWeekComponent implements OnInit {
   minutes: number = 60 - this.number_week.getMinutes();
   seconds: number = 60 - this.number_week.getSeconds();
 
-  @Input() product: any;
-  @Output() cantProductGlobal = new EventEmitter<number>();
-
   constructor(
     public dialogBox: DialogBox,
-    private _productsService: ProductsService
+    private _productsService: ProductsService,
+    private _helperShopping: HelperShoppingService
   ) { }
 
   ngOnInit(): void {
     this.loadProducts();
+    // this.productWeekly.fields.pvp_unitary = this.priceDescountProduct;
   }
-
+  
   public getTime() {
     let timeFinish = Math.floor(new Date().getTime() / 1000) + 604800;
     console.log(timeFinish);
     return timeFinish;
   }
-  public onfinish() { }
-
-  addAmount() {
-    this.cantProduct++;
-    this.cantProductGlobal.emit(this.cantProduct);
+  
+  changeProductAmount() {
+    this._helperShopping.changeMessage(this.productWeekly);
   }
-
+  
+  addAmount() {
+    this.productWeekly.fields.amount++;
+    this._helperShopping.changeMessage(this.productWeekly);
+  }
+  
   subtractAmount() {
-    this.cantProduct > 0 ? this.cantProduct-- : ""
+    if (this.productWeekly.fields.amount > 0) {
+      this.productWeekly.fields.amount--;
+      this._helperShopping.changeMessage(this.productWeekly);
+    }
   }
 
   loadProducts() {
-    this._productsService.getProducts().subscribe(
+    this.loader = true;
+    this._productsService.getProductWeekly().subscribe(
       data => {
-        this.productWeekly = data.records[1];
-        // console.log("---------");
-        // console.log(this.productWeekly);
-        // console.log(this.productWeekly.fields.image[0].url);
-        // console.log("---------");
+        this.productWeekly = data.records[0];
+        this.priceDescountProduct = this.productWeekly.fields.pvp_unitary - (this.productWeekly.fields.pvp_unitary * this.productWeekly.fields.discount)
+        this.productWeekly.fields.amount = 0;
+        this.loader = false;
       }
     )
   }
-
-
-
-  // loadProductWeekly(){
-  //   this.listProducts.forEach((element: any) => {
-  //     if (element.fields.weekly_option) {
-  //       this.productWeekly = element;
-  //     }
-  //   })
-  //   console.log("----");
-  //   console.log(this.listProducts);
-  //   console.log("----");
-  // }
-
-
 }

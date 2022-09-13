@@ -1,17 +1,10 @@
-<!-- <div class="container-fluid" *ngIf="product.fields.weekly_option">-->
-<!-- <div class="countdown" simpleCountdown [dateTo]="getTime()" [language]="'en'"
-        [endMessage]="'custom end message'"
-        (finish)="onfinish()"></div> -->
 <div class="container-fluid product-week">
     <div class="row">
         <div class="col-12 col-lg-7 text-product-week">
             <p class="title-content">Producto de la semana</p>
-            <!--  data-aos="fade-left" data-aos-duration="1500" data-aos-easing="linear" // h4 -->
-            <!-- <p class="subtitle-content">El nuevo producto de la semana tiene un gran descuento</p> -->
         </div>
         <div class="col-12 col-lg-5">
-            <div class="container_">
-                <!-- data-aos="fade-right" data-aos-duration="1500" data-aos-easing="linear" // div.container_ -->
+            <div class="container_ ">
                 <div class="count-week">
                     <p class="week-nn"><span>{{ days }}</span> <br> {{ days > 1 ? 'Días':'Dia' }} </p>
                     <p class="week-nn"><span>{{ hours }}</span> <br> {{ hours > 1 ? 'Horas':'Hora' }} </p>
@@ -19,11 +12,14 @@
                 </div>
                 <div class="price-discount">50%</div>
                 <div class="card_">
-                    <img [src]="productWeekly.fields.image[0].url" alt="" class="card-img">
-                    <div class="card-data">
+                    <app-loader *ngIf="loader"></app-loader>
+                    <img *ngIf="productWeekly" [src]="productWeekly.fields.image[0].url" alt="" width="260" height="263"
+                        class="card-img">
+                    <div *ngIf="productWeekly" class="card-data">
                         <h1 class="card-title">{{ productWeekly.fields.name }}</h1>
-                        <span class="card-preci card-preci-descount">$ {{ productWeekly.fields.pvp_unitary }}</span>
-                        <span class="card-preci">$ {{ productWeekly.fields.pvp_unitary }}</span>
+                        <span class="card-preci card-preci-descount">{{ productWeekly.fields.pvp_unitary |
+                            PriceNumberFormat}}</span>
+                        <span class="card-preci">{{ priceDescountProduct | PriceNumberFormat}}</span>
                         <a (click)="dialogBox.openDialog(dialog,'60vw','80%')" class="content-see-more">
                             <svg class="see-more" width="40" height="40" viewBox="0 0 30 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +31,7 @@
                                     fill="#fff" />
                             </svg>
                         </a>
-                        <div class="card__button">
+                        <div class="card-button">
                             <button class="button" (click)="subtractAmount()">
                                 <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +39,8 @@
                                 </svg>
                             </button>
                             <span class="count">
-                                <input type="number" class="input_card" [ngModel]="cantProduct">
+                                <input type="number" name="cantProduct" [(ngModel)]="productWeekly.fields.amount"
+                                    (blur)="changeProductAmount()">
                             </span>
                             <button class="button" (click)="addAmount()">
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
@@ -65,32 +62,47 @@
         <div class="row">
             <div class="col-12 col-md-7 cont-image">
                 <span class="name">viintas</span>
-                <img class="image-product" mat-card-image [src]="productWeekly.fields.image[0].url"
-                    alt="Photo of a Shiba Inu">
-                <div class="more-images">
+                <div class="animate__animated animate__fadeInLeft">
+                    <img *ngIf="productWeekly" class="image-product" mat-card-image
+                        [src]="productWeekly.fields.image[0].url" alt="Photo of a Shiba Inu">
+                </div>
+                <div class="more-images animate__animated animate__fadeInLeft">
                     <div class="option-images">
-                        <img mat-card-image [src]="productWeekly.fields.image[0].url">
+                        <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
                     </div>
                     <div class="option-images">
-                        <img mat-card-image [src]="productWeekly.fields.image[0].url">
+                        <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
                     </div>
                     <div class="option-images">
-                        <img mat-card-image [src]="productWeekly.fields.image[0].url">
+                        <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
                     </div>
                     <div class="option-images">
-                        <img mat-card-image [src]="productWeekly.fields.image[0].url">
+                        <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-5 content-product">
-                <p class="title_product"> {{ productWeekly.fields.name }} </p>
+                <p *ngIf="productWeekly" class="title-product animate__animated animate__fadeInRight"> {{
+                    productWeekly.fields.name }} </p>
                 <div class="content">
-                    <p class="price-unit"> $ {{ productWeekly.fields.pvp_unitary }}</p>
-                    <p class="price_whol">Al por mayor: $ {{ product.fields.pvp_wholesale }}</p>
-                    <p class="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quibusdam ratione non facilis
-                        repudiandae laborum dolore dolores incidunt similique corrupti!</p>
-                    <!-- <p> {{ productWeekly.fields.description }} </p> -->
-                    <div class="count_button">
+                    <p class="price-unit animate__animated animate__fadeInRight" *ngIf="productWeekly">{{
+                        priceDescountProduct | PriceNumberFormat}}</p>
+                    <p class="price-whol animate__animated animate__fadeInRight" *ngIf="productWeekly">Al por mayor: {{
+                        productWeekly.fields.pvp_wholesale | PriceNumberFormat}}
+                    </p>
+                    <p class="description animate__animated animate__fadeInRight" *ngIf="productWeekly"> {{
+                        productWeekly.fields.description }} </p>
+                    <div class="count-button animate__animated animate__jackInTheBox">
+                        <button class="button" (click)="subtractAmount()">
+                            <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
+                            </svg>
+                        </button>
+                        <span class="count">
+                            <input type="number" name="cantProduct" [(ngModel)]="productWeekly.fields.amount"
+                                (blur)="changeProductAmount()">
+                        </span>
                         <button class="button" (click)="addAmount()">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -98,19 +110,14 @@
                                 <rect class="icon-fill" y="16" width="6" height="25" transform="rotate(-90 0 16)" />
                             </svg>
                         </button>
-                        <span class="count">
-                            <input type="number" class="input_card" [ngModel]="cantProduct">
-                        </span>
-                        <button class="button" (click)="subtractAmount()">
-                            <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
-                            </svg>
-                        </button>
                     </div>
                 </div>
-                <a class=" btn-product btn3">Añadir al carrito</a>
-                <a class=" btn-product btn4">Comprar ahora</a>
+                <div class="animate__animated animate__fadeInUp">
+                    <a class="btn-product btn3">Añadir al carrito</a>
+                </div>
+                <div class="animate__animated animate__fadeInUp">
+                    <a class="btn-product btn4">Comprar ahora</a>
+                </div>
             </div>
         </div>
     </div>

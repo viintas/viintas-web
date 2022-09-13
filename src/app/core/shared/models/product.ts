@@ -1,6 +1,7 @@
 export interface Product {
     createdTime: string;
     fields: {
+      amount:number;
       category: string;
       image: [{
         url:string

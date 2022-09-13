@@ -1,81 +1,92 @@
-/*General*/
-.navbar {
-    padding: .3rem 5rem;
-    box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.4);
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+nav{
+    height: auto;
+    width: 100%;
+    padding: .5rem 0;
+    position: fixed;
+    top: 0;
     background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    z-index: 1000 !important;
 }
+.menu{
+    padding: 1rem 2rem;
+}
+/*Icon car*/
 
-.navbar-nav {
-    margin: 0 auto;
-}
-/*Icon Shopping*/
 .icon-shopping {
-
+    padding: .3rem;
+    margin-right: 2rem;
 }
 .icon-shopping svg{
     fill: var(--primary-color);
 }
-
-.collapse {
-    /* border: 3px solid var(--primary-color); */
-    /* margin-left: 1rem;
-    padding: .1rem; */
+.icon-shopping:hover {
+  transform: scale(1.08);
+  transition: .1s ease-in-out;
+  cursor: pointer;
 }
-
-.collapse ul li a {
+/*Logo*/
+.enlace{
+    position: absolute;
+    padding: 1rem 0 1rem 2rem;
+}
+.enlace img{
+    /* width: 10rem; */
+    height: 4rem;
+}
+/*Links*/
+.navbar .menu{
+    margin: auto;
+}
+.navbar .menu .item{
+    display: inline-block;
+    margin: 0 1rem;
+    z-index: 1000;
+}
+.navbar .menu .item > a{
     color: #092540;
-    font-weight: 400;
     font-size: 1rem;
 }
-.collapse ul li a:hover {
+.navbar .menu .item > a:hover{
     color: var(--primary-color-light);
-    font-weight: 400;
-    font-size: 1rem;
 }
-
-.dropdown-menu {
-    margin-top: 1.03rem;
-    border-radius: 0rem;
+/*Botón nav*/
+.checkbtn{
+    margin-left: auto;
+    border: var(--primary-color-light) solid 2px;
+    border-radius: .2rem;
+    padding: 0;
+    display: none;
+    margin-right: 2rem;
+    cursor: pointer;
 }
-
-.dropdown ul li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .2rem;
+.checkbtn:hover{
+    transform: scale(1.05);
 }
-
-.nav-link {
-    padding-bottom: 0;
+.checkbtn svg{
+    fill: var(--primary-color);
 }
-
-.navbar-nav {
-    padding-bottom: .3rem;
+#check{
+    display: none;
 }
-
-.nav-link {
-    padding-bottom: .2rem;
-}
-
-/*Change color*/
-/* ::ng-deep.mat-slide-toggle-bar{
-    background-color: #7580a3 ;
-}
-::ng-deep.mat-slide-toggle-thumb{
-    background-color: #3f559e ;
-}
-::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
-    background-color: #7580a3;
-} */
-
-.uno,
-.dos,
-.tres,
-.cuatro {
-    /* padding: 3rem; */
+/*dropdown*/
+.dropdown-menu .menu{
     width: 100%;
+}
+/* .show{
+    top: 34%;
+    z-index: 1000;
+    width: 20%;
+} */
+.change {
     height: 3rem;
-    border: none;
     border-radius: 1rem;
     border: solid 5px white;
 }
@@ -95,34 +106,56 @@
 .cuatro {
     background-color: #cf8f40;
 }
+.cinco {
+    background-color: #c92f2f;
+}
 
-.uno:hover,
-.dos:hover,
-.tres:hover,
-.cuatro:hover {
+.change:hover{
     transform: scale(1.05);
     cursor: pointer;
 }
-
-/*Scroll Navbar*/
-.scroll-nav {
-    box-shadow: var(--box-shadow);
-    background-color: var(--white-color);
-    transition: all ease-out .5s;
-}
-
-.scroll-nav-none {
-    box-shadow: none;
-    background-color: none;
-}
-
-/*Responsive*/
-@media (max-width:500px) {
-    .navbar {
-        padding: .3rem 1rem;
+@media screen and (max-width:768px) {
+    .menu{
+        padding: 0;
     }
-
-}
-@media (min-width:768px) {
-
+    .checkbtn{
+        display: block;
+    }
+    .menu{
+        position: fixed;
+        width: 100%;
+        height: auto;
+        background-color: var(--primary-color-light);
+        top: 44px;
+        transition: all .5s;
+        left: -100%;
+        text-align: center;
+    }
+    .navbar .menu .item {
+        display: block;
+        margin: 0;
+        padding: 1rem 0;
+    }
+    .navbar .menu .item:hover {
+        background-color: #00000023;
+    }
+    .navbar .menu .item > a {
+        color: #fff;
+        width: 100vw;
+    }
+    .navbar .menu .item > a:hover{
+        color: var(--white-color);
+    }
+    ::ng-deep .mat-menu-panel{
+        z-index: 2040 !important;
+    }
+    #check:checked ~ .menu {
+        left: 0;
+    }
+    .show{
+        left: calc(50% - 79px);
+    }
+    .enlace img{
+        height: 2.5rem;
+    }
 }

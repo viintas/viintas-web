@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { HelperShoppingService } from '../../shared/services/helperShopping.service';
+import { SendProductsService } from '../../shared/services/sendProducts.services';
 
 interface ProductShopping {
+  id: string;
   name: string;
   pvp_unitary: string;
   image: string;
@@ -16,39 +18,101 @@ interface ProductShopping {
 
 export class ShoppingCartComponent implements OnInit {
 
-  @Input() listProducts: Product[] = [];
-  lol: number = 1;
-  listProductsShopping: ProductShopping[] = [];
+  @Output() totalProducts = new EventEmitter<number>();
+
+  totalPrice: number = 0;
+  listProductsShopping: any[] = [];
   message: any = {};
   pruebaProduct: any | undefined;
 
-  constructor(private _helperShopping: HelperShoppingService) { }
+  constructor(private _helperShopping: HelperShoppingService,
+    private _sendProductsServices: SendProductsService) { }
 
   ngOnInit(): void {
-    this._helperShopping.customMessage.subscribe(
+    this.listProductChosen();
+  }
+
+  actualPrice(product: any): number {
+    if (product.fields.amount >= 6 && product.fields.discount) {
+      return (product.fields.pvp_wholesale - (product.fields.pvp_wholesale * product.fields.discount));
+    } else if (product.fields.amount >= 6) {
+      return product.fields.pvp_wholesale;
+    } else if (product.fields.discount) {
+      return (product.fields.pvp_unitary - (product.fields.pvp_unitary * product.fields.discount));
+    } else {
+      return product.fields.pvp_unitary;
+    }
+  }
+
+  sendTotalCantProducts() {
+    let totalAmountProducts = 0;
+    this.listProductsShopping.forEach(product => totalAmountProducts += product.fields.amount)
+    this.totalProducts.emit(totalAmountProducts);
+  }
+
+  sendListProducts() {
+    this._sendProductsServices.changeListProducts(this.listProductsShopping)
+  }
+
+  totalPriceProducts() {
+    this.totalPrice = 0;
+    this.listProductsShopping.forEach(element => {
+      if (element.fields.discount && element.fields.amount >= 6) {
+        this.totalPrice = this.totalPrice + ((element.fields.pvp_unitary - element.fields.pvp_wholesale * element.fields.discount) * element.fields.amount);
+      } else if (element.fields.discount) {
+        this.totalPrice = this.totalPrice + ((element.fields.pvp_unitary - element.fields.pvp_unitary * element.fields.discount) * element.fields.amount);
+      } else if (element.fields.amount >= 6) {
+        this.totalPrice = this.totalPrice + (element.fields.pvp_wholesale * element.fields.amount);
+      } else {
+        this.totalPrice = this.totalPrice + (element.fields.pvp_unitary * element.fields.amount);
+      }
+    });
+  }
+
+  listProductChosen() {
+    this._helperShopping.customProduct.subscribe(
       product => {
-
-        let newProduct = {
-          name: product.fields.name,
-          pvp_unitary: product.fields.pvp_unitary,
-          image: product.fields.image[0].url,
-          amount: product.amount
-        }
-
-        let pruebaProduct: any = this.listProductsShopping.find(element => element.name == product.fields.name);
-
-        if (pruebaProduct == undefined) {
-          this.listProductsShopping.push(newProduct);
-        } else {
-          if (pruebaProduct.name == product.fields.name) {
-            let index = this.listProductsShopping.findIndex(element => element.name == product.fields.name);
-            this.listProductsShopping[index].amount += 1;
+        if (product.id != undefined) {
+          let sendProduct: any = this.listProductsShopping.find(element => element.id == product.id);
+          if (sendProduct == undefined) {
+            this.listProductsShopping.push(product);
+          } else {
+            let index = this.listProductsShopping.findIndex(element => element.id == product.id);
+            if (product.fields.amount === 0) {
+              this.listProductsShopping.splice(index, 1);
+            } else {
+              this.listProductsShopping[index].fields.amount = product.fields.amount;
+            }
           }
+          this.sendTotalCantProducts();
+          this.totalPriceProducts();
         }
       });
   }
 
-  arrayRandom(num: number) {
-    return new Array(num);
+  changeProductAmount(product: any) {
+    this._helperShopping.changeMessage(product);
+    this.sendTotalCantProducts();
+  }
+
+  addAmount(index: number) {
+    this.listProductsShopping[index].fields.amount++;
+    this._helperShopping.changeMessage(this.listProductsShopping[index]);
+    this.sendTotalCantProducts();
+  }
+
+  subtractAmount(index: number) {
+    if (this.listProductsShopping[index].fields.amount > 0) {
+      this.listProductsShopping[index].fields.amount--;
+      this._helperShopping.changeMessage(this.listProductsShopping[index]);
+      this.sendTotalCantProducts();
+    }
+  }
+
+  deleteProduct(index: number) {
+    this.listProductsShopping[index].fields.amount = 0;
+    this._helperShopping.changeMessage(this.listProductsShopping[index]);
+    this.listProductsShopping.splice(index, 1);
+    this.sendTotalCantProducts();
   }
 }

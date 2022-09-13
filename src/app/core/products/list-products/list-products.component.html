@@ -1,26 +1,49 @@
 <div class="container-fluid content-list">
-  <article class="row">
-    <a class="mini-shopping-car" href="/list#shopping-car" *ngIf="hideShoppingCar">
-      <img src="./../../../../assets/img/carrito-de-compras.svg" alt="" srcset="">
+  <div class="row">
+    <a class="mini-shopping-car" (click)="changeActiveCar()" *ngIf="cantProductsTotal != 0">
+      <img src="./../../../../assets/img/carrito-de-compras.svg" width="32" height="32" alt="">
+      <mat-icon [matBadge]="cantProductsTotal" matBadgeColor="warn"></mat-icon>
     </a>
-    <section class="col-12">
-      <app-product-to-week (cantProductGlobal)="newCount($event)"></app-product-to-week>
-    </section>
-    <section class="col-12 information">
-      <app-information-section></app-information-section>
-    </section>
-    <section class="col-12 col-md-8 col-lg-9">
+    <div class="col-12">
+      <app-product-to-week></app-product-to-week>
+    </div>
+    <div class="col-12 information">
+      <app-information-section id="information-section"></app-information-section>
+    </div>
+    <div [class]="cantProductsTotal == 0 ? 'col-12' : 'col-12 col-md-8 col-lg-9'" id="products-section">
       <h4 class="title-list-products">Nuestra lista de productos</h4>
-      <!--  data-aos="fade-right" data-aos-duration="1500" data-aos-easing="linear" // h4 -->
-      <div *ngIf="categories && products" class="row">
-        <app-product-card *ngFor="let product of products; let i=index" [product]="product"
-          [category]="getCategory(product)" class="col-10 col-md-12 mx-auto col-lg-6">
-          <!-- class="product col-12" -->
-        </app-product-card>
+      <div class="row">
+        <ng-container *ngFor="let product of products; let i=index">
+          <app-product-card [loader]="loaderActive" [product]="product" [category]="getCategory(product)"
+            class="col-10 col-md-12 mx-auto col-lg-6">
+          </app-product-card>
+        </ng-container>
+        <div class="loader" *ngIf="loaderActive">
+          <div class="skeleton skeleton-rect" style="
+          --rect-h: 300px;
+          --c-bg: #f7f7f7;
+          --lines: 3;
+          ">
+            <app-loader></app-loader>
+          </div>
+          <div class="skeleton skeleton-rect" style="
+          --rect-h: 300px;
+          --c-bg: #f7f7f7;
+          --lines: 3;
+          ">
+            <app-loader></app-loader>
+          </div>
+        </div>
       </div>
-    </section>
-    <section class="col-12 col-md-4 col-lg-3 car" id="shopping-car">
-      <app-shopping-cart [listProducts]="products"></app-shopping-cart>
-    </section>
-  </article>
+    </div>
+    <div class="col-12 col-md-4 col-lg-3 " [ngClass]="{
+                'car-active animate__animated animate__fadeInDown':cardActive === true,
+                'd-none d-md-none': cantProductsTotal === 0,
+                'd-none d-md-inline animate__animated animate__fadeInUp': cardActive === false,
+                'animate__animated animate__fadeInDown shopping': cantProductsTotal != 0,
+                'fixed': cantProductsTotal != 0 && cardActive === true
+              }" id="shopping-car">
+              <app-shopping-cart (totalProducts)="totalGetProducts($event)"></app-shopping-cart>
+    </div>
+  </div>
 </div>

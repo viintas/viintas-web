@@ -10,7 +10,6 @@
     min-height: 100vh;
     position: sticky;
     top: 0;
-    /* border: solid rgb(189, 189, 189) 1px; */
 }
 
 .path-wave {
@@ -23,44 +22,13 @@
     width: 110%;
     height: 100vh;
     margin-left: -10%;
-    z-index: 100;
-}
-
-/*Logo Section*/
-
-.shopping-logo {
-    width: 100%;
-    height: 10vh;
-    /* margin-left: -10%; */
-    /* background-color: var(--second-color); */
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding-right: 1rem;
-    /* border-bottom: solid 1px #fff; */
-}
-
-.shopping-logo .logo {
-    width: 30%;
-}
-
-.name {
-    font-weight: bold;
-    display: block;
-    position: absolute;
-    margin-left: 60%;
-    padding: 2rem;
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.623);
-    z-index: 1000;
-    font-family: Gill Sans, 'Lince-BlackItalic', cursive !important;
 }
 
 /*Container Section*/
 
 .shopping-products {
-    height: 75vh;
-    margin: 0 auto;
+    height: 69vh;
+    margin: 0 auto 0;
     border-radius: 1.5rem 0 0 0;
     width: 90%;
     overflow-y: scroll;
@@ -84,8 +52,6 @@
 
 .shopping-products .content-card-product {
     padding-left: 1rem;
-    /* text-align: center; */
-    /* height: 15rem; */
 }
 
 .shopping-products .text-card-product {
@@ -101,9 +67,6 @@
 
 /*Close Button*/
 .img-close {
-    /* position: absolute; */
-    /* margin: auto; */
-    /* margin-left: 15%; */
     background-color: rgb(148, 112, 112);
     width: 100%;
 }
@@ -112,7 +75,7 @@
     display: block;
     margin-left: 97.5%;
     margin-top: -5%;
-    width: 6%;
+    width: 1rem;
 }
 
 .img-close img:hover {
@@ -130,20 +93,17 @@
     width: 6rem;
     display: block;
     margin: auto;
-    /* padding-right: .5rem; */
-    /* border-right: solid .5px rgb(199, 199, 199); */
 }
 
 /*Content*/
 .shopping-container {
-    /* padding: 2rem; */
     z-index: 111;
-
+    padding-top:70px ;
 }
+
 /*=== Scroll bar ===*/
-/* width */
 .shopping-products::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
 /* Track */
@@ -153,8 +113,8 @@
 
 /* Handle */
 .shopping-products::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
     background: var(--primary-color);
-    /* border-radius: .2rem; */
 }
 
 /* Handle on hover */
@@ -171,7 +131,6 @@
     width: 100%;
     border: none;
     border-radius: 5rem;
-    /* padding: 0 0; */
 }
 
 .count input {
@@ -207,17 +166,6 @@
     margin: 0;
 }
 
-.count_button {
-    padding: .7rem .4rem;
-    border-radius: .5rem;
-    font-weight: 600;
-    transition: .2s;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /*Botónes generales*/
 .button {
     background-color: var(--white-color);
@@ -247,20 +195,19 @@
 
 /*Price Section*/
 .shopping-price {
-    /* height: 20vh; */
     background-color: rgb(199, 199, 199);
     bottom: 0;
     border-radius: 0 0 0 1.5rem;
     width: 90%;
+    height: auto;
     margin: 0 auto;
     box-shadow: 2px 2px 5px rgb(75, 75, 75);
-    padding: 1.5rem;
-    clear:bloth;
+    padding: 1.3rem;
+    clear: bloth;
 }
 
 .price-total {
-    /* padding-top: .5rem; */
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: rgb(58, 58, 58);
 }
@@ -278,9 +225,58 @@
 }
 
 .button-buy button:hover {
-    /* color: var(--primary-color);
-    background-color: var(--white-color);
-    border: solid 1px var(--primary-color); */
     transform: scale(1.05);
     transition: .2s ease-in-out;
+}
+
+@media only screen and (max-width:768px) {
+    .img-close img {
+        margin-top: 0;
+    }
+    .wave{
+        top: 0;
+        background-color: var(--primary-color-light);
+        margin: 0;
+    }
+    .path-wave {
+        display: none;
+    }
+    .shopping-products{
+        height: 65vh;
+    }
+    .shopping-price, .shopping-products{
+        max-width: 25rem;
+        margin: auto;
+    }
+    /* .shopping-card{
+        padding-top: 3rem;
+    } */
+}
+@media only screen and (max-width:885px) and (min-width:768px) {
+    .shopping-products, .shopping-price {
+        margin: 0;
+        width: 100%;
+    }
+
+    .button, .input_card {
+        transform: scale(.8);
+    }
+
+    .button {
+        margin: 0 ;
+    }
+}
+@media only screen and (max-width:1179px) and (min-width:992px)  {
+    .shopping-products, .shopping-price {
+        margin: 0;
+        width: 100%;
+    }
+
+    .button, .input_card {
+        transform: scale(.8);
+    }
+
+    .button {
+        margin: 0 ;
+    }
 }

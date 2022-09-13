@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../shared/models/category';
-import { CategoryService } from '../../shared/services/category.service';
 import { HelperShoppingService } from '../../shared/services/helperShopping.service';
 import { DialogBox } from '../../shared/utils/dialogbox.service';
 
@@ -14,47 +13,37 @@ export class ProductCardComponent implements OnInit {
   constructor(
     public dialogBox: DialogBox,
     private _helperShopping: HelperShoppingService
-    ) { }
+  ) { }
 
   @Input() product: any;
   @Input() category: Category | undefined;
+  @Input() loader: boolean | undefined;
 
-  message: object = {};
-  categories: any;
-  listProductsFavorites: any[] = [];
   listProductsSelected: any[] = [];
-  cantProduct: number = 0;
+  load:boolean = false;
 
   ngOnInit(): void {
-    console.log(this.category);
-    this._helperShopping.customMessage.subscribe(msg => this.message = msg);
+    this.product.fields.amount = 0;
   }
 
-  changeMessage(sendProduct:object){
-    this._helperShopping.changeMessage(sendProduct);
+  // changeMessage(sendProduct:object){
+  //   this._helperShopping.changeMessage(sendProduct);
+  // }
+
+  changeProductAmount() {
+    this._helperShopping.changeMessage(this.product);
   }
 
   addAmount() {
-    this.product.amount = this.cantProduct + 1;
-    this.changeMessage(this.product);
-    this.cantProduct++;
+    this.product.fields.amount++;
+    this._helperShopping.changeMessage(this.product);
   }
 
   subtractAmount() {
-    this.cantProduct > 0 ? this.cantProduct-- : ""
-  }
-
-  deleteProduct(id: string) {
-    this.listProductsSelected.forEach((element, index) => {
-      if (element.id == id) {
-        this.listProductsSelected.splice(index, 1)
-      }
-    })
-  }
-
-  addProduct(product: any) {
-    this.listProductsSelected.push(product);
-    //this.product = {};
+    if (this.product.fields.amount > 0) {
+      this.product.fields.amount--;
+      this._helperShopping.changeMessage(this.product);
+    }
   }
 
 }

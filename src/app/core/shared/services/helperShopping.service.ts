@@ -5,13 +5,16 @@ import { BehaviorSubject } from "rxjs";
     providedIn: 'root'
 })
 export class HelperShoppingService {
-    private message = new BehaviorSubject<any>({});
+    //Una variable Behavior requiere un valor inicial, en este caso un objeto vacio, y esta emite su valor cada vez que se suscribe
+    private product = new BehaviorSubject<any>({});
 
-    public customMessage = this.message.asObservable();
+    //Crea un observable del product
+    public customProduct = this.product.asObservable();
 
     constructor() { }
-
-    public changeMessage(msg: any): void {
-        this.message.next(msg);
+    
+    //Cambiar el valor del producto
+    public changeMessage(product: any): void {
+        this.product.next(product);
     }
 }

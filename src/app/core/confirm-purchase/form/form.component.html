@@ -1,20 +1,27 @@
 <div class="login-page">
     <div class="form">
-        <!-- <form class="register-form">
-            <input type="text" placeholder="name" />
-            <input type="password" placeholder="password" />
-            <input type="text" placeholder="email address" />
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form> -->
         <form class="login-form">
-            <input type="text" placeholder="Nombres y Apellidos" />
-            <input type="text" placeholder="Dirección" />
-            <input type="number" placeholder="Celular" />
-            <input type="email" placeholder="Correo" />
-            <input type="text" placeholder="Ciudad" />
-            <!-- <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+            <input (blur)="validatorFormOne()" type="text" name="name" [(ngModel)]="name"
+                placeholder="Nombres y Apellidos" required />
+                <input (blur)="validatorFormOne()" type="number" name="phone" [(ngModel)]="phone" placeholder="Celular"
+                required />
+                <input (blur)="validatorFormOne()" type="email" name="email" [(ngModel)]="email" placeholder="Correo"
+                required />
+            <select (blur)="validatorFormOne()" (click)="getCities()" name="municipalities" id=""
+                [(ngModel)]="municipality">
+                <option hidden value="" disabled selected>Municipio</option>
+                <option *ngFor="let municipality of listMunicipalities" [value]="municipality">{{municipality}}</option>
+            </select>
+            <select (click)="validatorFormOne()" name="cities" id="" [(ngModel)]="cities">
+                <option hidden value="" disabled selected>Ciudad</option>
+                <option *ngFor="let city of listCities" [value]="city">{{city}}</option>
+            </select>
+            <input *ngIf="validatorOne" type="text" name="address" [(ngModel)]="address" placeholder="Dirección"
+                required />
+            <input *ngIf="validatorOne" type="text" name="cedula" [(ngModel)]="cedula" placeholder="Cédula"
+                required />
+            <input *ngIf="validatorOne" type="text" name="barrio" (blur)="this.confirmInformation()" [(ngModel)]="barrio" placeholder="Barrio"
+                required />
         </form>
     </div>
 </div>

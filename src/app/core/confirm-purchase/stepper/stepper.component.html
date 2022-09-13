@@ -1,32 +1,38 @@
-<mat-stepper class="stepper" labelPosition="bottom" #stepper>
-    <!-- <p class="title">Confirma tu información de compra</p> -->
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+<mat-stepper linear #stepper class="stepper">
+    <mat-step [editable]="true">
+        <form>
             <ng-template matStepLabel>Listado de productos</ng-template>
-            <app-list></app-list>
+            <app-list (dataListProducts)="dataListProducts($event)"></app-list>
             <hr class="hr">
             <div>
-                <button class="button-next" mat-button matStepperNext>Continuar</button>
+                <button class="button-next" mat-button matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+    <!-- [stepControl]="secondFormGroup"
+    [formGroup]="secondFormGroup" -->
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+    </mat-form-field> -->
+    <mat-step  [editable]="true">
+        <form>
             <ng-template matStepLabel>Confirmación de datos</ng-template>
-            <app-form></app-form>
+            <app-form (dataUserForm)="dataUserForm($event)"></app-form>
             <hr class="hr">
             <div>
-                <button class="button-next" mat-button matStepperPrevious>Anterior</button>
-                <button class="button-next" mat-button matStepperNext>Continuar</button>
+                <button class="button-next" mat-button matStepperPrevious>Back</button>
+                <button class="button-next" mat-button matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Datos de envio</ng-template>
-        <p>Info de envio</p>
+        <app-shipping (dataShipping)="listProducts" (dataUser)="dataUser"></app-shipping>
         <hr class="hr">
         <div>
-            <button class="button-next" mat-button matStepperPrevious>Anterior</button>
+            <button class="button-next" mat-button matStepperPrevious>Back</button>
+            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
         </div>
     </mat-step>
 </mat-stepper>

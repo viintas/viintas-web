@@ -4,10 +4,6 @@
   font-family: var(--body-font) !important;
 }
 
-.car {
-  /* margin:10% 0; */
-}
-
 .product {
   float: left;
   width: 30%;
@@ -15,20 +11,34 @@
 }
 
 .content-list {
-  /* margin-top: 10%; */
   background-color: var(--primary-color-background);
+  /* overflow: hidden; */
 }
 
 .information {
   background-color: var(--white-color);
 }
+/*Loader*/
 
-/*List products*/
-.list-products {
-  padding: 5rem;
-
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
 }
+.loader .skeleton{
+  margin: 0 5rem;
+}
+.skeleton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*List products*/
 
+#products-section{
+  transition: all 1s;
+}
 .title-list-products {
   text-align: left;
   font-size: 3rem;
@@ -38,37 +48,66 @@
   line-height: 3rem;
 }
 
+/*Carrito activado*/
+/* .shop{
+  transition: all 1s ease-in-out;
+  right: -100%;
+  overflow: hidden;
+} */
+.car-active {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 910;
+  margin-top: 62px;
+  transition: all 1s;
+  /* right: 100%; */
+  transition: all 1s ease-in-out;
+}
+.shopping {
+  transition: all 1s ease-in-out;
+  display: inline;
+  position: sticky;
+  top: 0px;
+  z-index: 910;
+  right: 0;
+}
+
+.fixed{
+  position: fixed;
+}
 /*Mini shopping car*/
 .mini-shopping-car {
   background-color: var(--primary-color);
-  width: 4rem;
-  height: 4rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
-  right: 0;
-  margin: 3%;
+  right: .8rem;
+  top: .8rem;
   position: fixed;
-  top: 5%;
+  z-index: 1000 !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* animation: shopping-car 3s infinite ease-in alternate-reverse; */
 }
 
 .mini-shopping-car:hover {
   transform: scale(1.1);
   transition: all .1s ease-in;
   box-shadow: 0px 0px 15px var(--primary-color);
+  cursor: pointer;
 }
 
 .mini-shopping-car img {
   width: 50%;
   display: block;
   margin: auto;
+  margin-left: 11px;
 }
 
 /*Animation mini car*/
 .animation-mini-car {
-  -webkit-animation: animar .6s linear;
+  animation: animar .6s linear;
   transform: scale(1.1);
   box-shadow: 0px 0px 15px var(--primary-color);
 }
@@ -119,18 +158,19 @@
   }
 }
 
-/* @media (max-width:px) {
-  .title-list-products {
-    width: 80%;
-    text-align: center;
-    padding: 5.5rem 0 2rem;
+@media only screen and (max-width:768px) {
+  .car-active {
+    top: -40px;
   }
-  .product {
-    float: left;
-    width: 30%;
-    margin: 0 auto 5rem;
+
+  .mini-shopping-car {
+    width: 2rem;
+    height: 2rem;
+    right: 5rem;
+    top: .4rem;
   }
-} */
+}
+
 @media (max-width:992px) {
   .title-list-products {
     width: 80%;
@@ -145,12 +185,4 @@
     padding: 0 2rem;
   }
 
-  /* .car{
-    width: 40vw;
-  } */
 }
-/* @media (min-width:992px){
-  .product {
-    width: 100%;
-  }
-} */

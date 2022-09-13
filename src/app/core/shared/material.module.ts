@@ -12,28 +12,29 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatBadgeModule } from '@angular/material/badge';
 
-// import { MatCommonModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HelperShoppingService } from './services/helperShopping.service';
 const materialModules = [
   MatCardModule,
   MatButtonModule,
   MatDialogModule,
   MatToolbarModule,
-  MatIconModule,
   MatMenuModule,
   MatSlideToggleModule,
   MatInputModule,
   MatFormFieldModule,
   FormsModule,
   ReactiveFormsModule,
-  MatStepperModule
-  // MatCommonModule
-]
+  MatStepperModule,
+  MatIconModule,
+  MatBadgeModule
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    // ...pipes
+  ],
   imports: [
     CommonModule,
     ...materialModules,

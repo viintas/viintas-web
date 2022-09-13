@@ -7,21 +7,21 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from './core/products/products.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BannerComponent } from './core/components/banner/banner.component';
-import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
 import { HeaderComponent } from './core/components/header/header.component';
 import { MaterialModule } from './core/shared/material.module';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { ConfirmPurchaseModule } from './core/confirm-purchase/confirm-purchase.module';
 // import { InformationSectionComponent } from './core/components/information-section/information-section.component';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import 'css-skeletons';
+// import { LoaderComponent } from './core/components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
     BannerComponent,
     HeaderComponent,
     FooterComponent,
-    // InformationSectionComponent
+    // LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -30,11 +30,12 @@ import { MatStepperModule } from '@angular/material/stepper';
     ProductsModule,
     ConfirmPurchaseModule,
     BrowserAnimationsModule,
-    NgxSimpleCountdownModule,
     MaterialModule,
+    ProductsModule,
     MatStepperModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

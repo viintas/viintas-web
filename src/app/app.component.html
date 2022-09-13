@@ -1,5 +1,67 @@
 <app-header></app-header>
-<!-- *ngIf="router.url === '/list'" -->
-<app-banner></app-banner>
+<app-banner *ngIf="router.url === '/list'"></app-banner>
+<!-- 1
+<div class="skeleton skeleton-line"
+style="
+    --lines: 3;
+    --c-bg: #faecf6;
+    --bg: #eeb6e0;
+    --shine: #f5c3da;
+    --t:1s;
+    "
+></div>
+2
+<div class="skeleton skeleton-rect" 
+style="
+    --rect-h: 150px;
+    --c-bg: #f7f7f7;
+    --lines: 3;
+    "
+></div>
+3
+<div class="skeleton skeleton-circle-multi-line" 
+style="
+    --c-s: 80px;
+    --c-pos: bottom;
+    --lines: 4;
+    "
+></div>
+4
+<div class="skeleton skeleton-chart-columns" 
+style="
+    --cols: 10;
+    --col-w: 30px;
+    --col-gap: 20px;
+    "
+></div>
+5
+<div class="skeleton skeleton-chart-line" 
+style="
+    --c-w: 400px;
+    --chart-h: 150px;
+    --chart-btm: 60px;
+    "
+></div>
+6
+<div class="skeleton skeleton-card-1"
+style="
+    --c-w: 500px;
+    --card-h: 120px;
+    "
+></div>
+7
+<div class="skeleton skeleton-list" 
+  style="
+    --lines: 5;
+    --c-w: 400px;
+  "
+></div>
+8
+<div class="skeleton skeleton-image" 
+  style="
+    --i-w: 300px;
+    --c-bg: #f8f7fc;
+  "
+></div> -->
 <router-outlet></router-outlet>
 <app-footer></app-footer>

@@ -13,19 +13,10 @@ body { margin: 0;padding: 0; }
     --primary-color-background:#d6d9e2;
     --primary-color-80:rgba(63, 85, 158, 0.8);
 
-    --first-color: #c71c81;
-    --first-color-light: #c55898;
-    --first-color-50: rgba(199, 28, 128, 0.5);
-    --second-color: #3f559e;
-    --second-color-light: #6576ac;
-    --second-color-90: rgba(63, 85, 158, 0.9);
-    --degrade-all-colors-50:linear-gradient(90deg, rgba(63, 85, 158, 0.5) 12.71%, rgba(115, 63, 147, 0.5) 52.75%, rgba(199, 28, 128, 0.5) 100%);
     --white-color: #ffffff;
     --dark-color: #000000;
     --dark-color-lighten: #F2F5FF;
     --grey-color-ligth:rgb(238, 238, 238);
-    --primary-gradient:linear-gradient(90deg, #3F559E 12.71%, #733F93 52.75%, #C71C81 100%);
-    --primary-gradient-80:linear-gradient(90deg, rgba(63, 85, 158, 0.8) 12.71%, rgba(115, 63, 147, 0.8) 52.75%, rgba(199, 28, 128, 0.8) 100%);
     /*==== Others Components  ====*/
     --box-shadow:2px 2px 3px rgba(92, 92, 92, 0.4);
 

@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { ProductsRoutingModule } from './products-routing.module';
-import { CreateProductComponent } from './create-product/create-product.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { MaterialModule } from '../shared/material.module';
 import { ProductToWeekComponent } from './product-to-week/product-to-week.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { InformationSectionComponent } from '../components/information-section/information-section.component';
-import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
+import { LoaderComponent } from './../components/loader/loader.component';
 import { ExtraOptions } from '@angular/router';
+import { PriceNumberFormat } from '../shared/pipes/priceNumberFormat.pipe';
+import { ModalProductComponent } from './modal-product/modal-product.component';
+import { HelperShoppingService } from '../shared/services/helperShopping.service';
+import { SendProductsService } from '../shared/services/sendProducts.services';
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: "enabled",
@@ -19,17 +22,22 @@ const routerOptions: ExtraOptions = {
 @NgModule({
   declarations: [
     ListProductsComponent,
-    CreateProductComponent,
     ProductCardComponent,
     ProductToWeekComponent,
     ShoppingCartComponent,
-    InformationSectionComponent
+    InformationSectionComponent,
+    LoaderComponent,
+    PriceNumberFormat,
+    ModalProductComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    MaterialModule,
-    NgxSimpleCountdownModule
+    MaterialModule
+  ],
+  providers:[
+    HelperShoppingService,
+    SendProductsService
   ]
 })
 export class ProductsModule { }

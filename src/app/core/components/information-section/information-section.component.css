@@ -38,8 +38,13 @@
     width: 60%;
     display: block;
     margin: 0 auto;
-}
+    /* filter: invert(14%) sepia(95%) saturate(6069%) hue-rotate(30deg) brightness(10%) contrast(117%);  */
 
+    /* filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(280deg); */
+}
+.icon {
+    background-color: #0000;
+  }
 .text {
     text-align: center;
     margin-top: 15%;
@@ -90,9 +95,6 @@
     .section{
         padding: 0;
     }
-    /* .info {
-        margin: 15% 0;
-    }     */
     .title-text{
         line-height: 1.5rem;
     }
