@@ -1,48 +1,46 @@
-<!-- <div class="modal_">
+<div class="modal_">
     <div class="row">
         <div class="col-12 col-md-7 cont-image">
             <span class="name">viintas</span>
             <div class="animate__animated animate__fadeInLeft">
-                <img *ngIf="productWeekly" class="image-product" mat-card-image
-                    [src]="productWeekly.fields.image[0].url" alt="Photo of a Shiba Inu">
+                <img *ngIf="productShow" class="image-product" mat-card-image
+                    [src]="imageSelected" alt="Photo of a Shiba Inu">
             </div>
-            <div class="more-images animate__animated animate__fadeInLeft">
-                <div class="option-images">
-                    <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
-                </div>
-                <div class="option-images">
-                    <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
-                </div>
-                <div class="option-images">
-                    <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
-                </div>
-                <div class="option-images">
-                    <img *ngIf="productWeekly" mat-card-image [alt]="" [src]="productWeekly.fields.image[0].url">
-                </div>
+            <div *ngIf="productShow" class="more-images animate__animated animate__fadeInLeft">
+                <ng-container *ngFor="let image of productShow.fields.image;let i = index">
+                    <div *ngIf="imageSelected !== image.url" class="option-images" (click)="changeImage(i)">
+                        <img mat-card-image [alt]="" [src]="image.url">
+                    </div>
+                </ng-container>
             </div>
         </div>
         <div class="col-12 col-md-5 content-product">
-            <p *ngIf="productWeekly" class="title-product animate__animated animate__fadeInRight"> {{ productWeekly.fields.name }} </p>
+            <p *ngIf="productShow" class="title-product animate__animated animate__fadeInRight"> {{
+                productShow.fields.name }} </p>
             <div class="content">
-                <p class="price-unit animate__animated animate__fadeInRight" *ngIf="productWeekly">{{ productWeekly.fields.pvp_unitary | PriceNumberFormat}}</p>
-                <p class="price-whol animate__animated animate__fadeInRight" *ngIf="productWeekly">Al por mayor: {{ productWeekly.fields.pvp_wholesale | PriceNumberFormat}}
+                <p class="price-unit animate__animated animate__fadeInRight" *ngIf="productShow">{{
+                    productShow.fields.pvp_unitary | PriceNumberFormat}}</p>
+                <p class="price-whol animate__animated animate__fadeInRight" *ngIf="productShow">Al por mayor: {{
+                    productShow.fields.pvp_wholesale | PriceNumberFormat}}
                 </p>
-                <p class="description animate__animated animate__fadeInRight" *ngIf="productWeekly"> {{ productWeekly.fields.description }} </p>
+                <p class="description animate__animated animate__fadeInRight" *ngIf="productShow"> {{
+                    productShow.fields.description }} </p>
                 <div class="count-button animate__animated animate__jackInTheBox">
+                    <button class="button" (click)="subtractAmount()">
+                        <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
+                        </svg>
+                    </button>
+                    <span class="count">
+                        <input *ngIf="productShow" type="number" name="cantProduct" [(ngModel)]="productShow.fields.amount"
+                            (blur)="changeProductAmount()">
+                    </span>
                     <button class="button" (click)="addAmount()">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect class="icon-fill" x="9" width="6" height="25" fill="#c71c81" />
                             <rect class="icon-fill" y="16" width="6" height="25" transform="rotate(-90 0 16)" />
-                        </svg>
-                    </button>
-                    <span class="count">
-                        <input type="number" [ngModel]="cantProduct">
-                    </span>
-                    <button class="button" (click)="subtractAmount()">
-                        <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
                         </svg>
                     </button>
                 </div>
@@ -55,4 +53,4 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>

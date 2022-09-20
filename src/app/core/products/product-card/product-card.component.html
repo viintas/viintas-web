@@ -6,11 +6,11 @@
 <div *ngIf="product" class="container_">
   <div class="card_">
     <app-loader *ngIf="loader"></app-loader>
-    <img [src]="product.fields.image[0].url" alt="" class="card-img" width="196" height="198">
+    <img (click)="dialogBox.openDialog(dialog,'60vw','80%');" [src]="product.fields.image[0].url" alt="" class="card-img" width="196" height="198">
     <div class="card-data">
-      <h1 class="card-title">{{ product.fields.name }}</h1>
+      <h3 class="card-title" (click)="dialogBox.openDialog(dialog,'60vw','80%');">{{ product.fields.name }}</h3>
       <span class="card-preci">{{ product.fields.pvp_unitary | PriceNumberFormat}}</span>
-      <a (click)="dialogBox.openDialog(dialog,'60vw','80%')" class="content-see-more">
+      <a (click)="dialogBox.openDialog(dialog,'60vw','80%');" class="content-see-more">
         <svg class="see-more" width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="see-more-path"
             d="M12.5 22.5C14.8075 22.5 16.9288 21.7063 18.6213 20.39L24.1163 25.885L25.8838 24.1175L20.3888 18.6225C21.7063 16.9287 22.5 14.8075 22.5 12.5C22.5 6.98625 18.0138 2.5 12.5 2.5C6.98625 2.5 2.5 6.98625 2.5 12.5C2.5 18.0137 6.98625 22.5 12.5 22.5ZM12.5 5C16.6363 5 20 8.36375 20 12.5C20 16.6363 16.6363 20 12.5 20C8.36375 20 5 16.6363 5 12.5C5 8.36375 8.36375 5 12.5 5Z"
@@ -40,61 +40,5 @@
   </div>
 </div>
 <ng-template #dialog>
-  <div class="modal_">
-    <div class="row">
-      <div class="col-12 col-md-7 cont-image">
-        <span class="name">viintas</span>
-        <div class="animate__animated animate__fadeInLeft">
-          <img class="image-product" mat-card-image [src]="product.fields.image[0].url" [alt]="product.fields.name">
-        </div>
-        <div class="more-images animate__animated animate__fadeInLeft">
-          <div class="option-images">
-            <img mat-card-image [src]="product.fields.image[0].url" alt="">
-          </div>
-          <div class="option-images">
-            <img mat-card-image [src]="product.fields.image[0].url" alt="">
-          </div>
-          <div class="option-images">
-            <img mat-card-image [src]="product.fields.image[0].url" alt="">
-          </div>
-          <div class="option-images">
-            <img mat-card-image [src]="product.fields.image[0].url" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-5 content-product">
-        <p class="title-product"> {{ product.fields.name }} </p>
-        <div class="content">
-          <p class="price-unit animate__animated animate__fadeInRight"> {{ product.fields.pvp_unitary |
-            PriceNumberFormat }}</p>
-          <p class="price-whol animate__animated animate__fadeInRight">Al por mayor: {{ product.fields.pvp_wholesale |
-            PriceNumberFormat }}</p>
-          <p class="description animate__animated animate__fadeInRight"> {{ product.fields.description }} </p>
-          <div class="count-button animate__animated animate__jackInTheBox">
-            <button class="button" (click)="subtractAmount()">
-              <svg width="25" height="25" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
-              </svg>
-            </button>
-            <span class="count">
-              <input type="number" name="cantProduct" [(ngModel)]="product.fields.amount"
-                (blur)="changeProductAmount()">
-            </span>
-            <button class="button" (click)="addAmount()">
-              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect class="icon-fill" x="9" width="6" height="25" fill="#c71c81" />
-                <rect class="icon-fill" y="16" width="6" height="25" transform="rotate(-90 0 16)" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="animate__animated animate__fadeInUp">
-          <a class=" btn-product btn3">Añadir al carrito</a>
-        </div>
-        <div class="animate__animated animate__fadeInUp">
-          <a class=" btn-product btn4">Comprar ahora</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <app-modal-product [productShow]="product"></app-modal-product>
 </ng-template>

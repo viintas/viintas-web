@@ -1,19 +1,5 @@
 @import url(./../../../../assets/css/cardProducts.css);
 
-/*Modal*/
-.modal_ {
-    z-index: 1080 !important;
-}
-.description {
-    font-size: 1rem;
-}
-
-/*===== Price =====*/
-.price-unit {
-    
-    margin-bottom: 1rem;
-}
-
 /*===== CARD =====*/
 .container_ {
     height: 80%;

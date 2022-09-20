@@ -26,10 +26,6 @@ export class ProductCardComponent implements OnInit {
     this.product.fields.amount = 0;
   }
 
-  // changeMessage(sendProduct:object){
-  //   this._helperShopping.changeMessage(sendProduct);
-  // }
-
   changeProductAmount() {
     this._helperShopping.changeMessage(this.product);
   }
