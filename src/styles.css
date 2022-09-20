@@ -7,11 +7,11 @@ body { margin: 0;padding: 0; }
 /*===== VARIABLES CSS =====*/
 :root {
     /*===== Colores =====*/
-    --primary-color:#3f559e;
-    --primary-color-dark:#132c7e;
-    --primary-color-light:#6576ac;
-    --primary-color-background:#d6d9e2;
-    --primary-color-80:rgba(63, 85, 158, 0.8);
+    --primary-color:#07889b;
+    --primary-color-dark:#0b6d7c;
+    --primary-color-light:#66B9bf;
+    --primary-color-background:#abe1e9;
+    --primary-color-80:rgba(7, 135, 155, 0.8);
 
     --white-color: #ffffff;
     --dark-color: #000000;

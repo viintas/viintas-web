@@ -35,12 +35,10 @@
     -webkit-mask-image: url(./../../../../assets/img/productToWeek.svg);
 }
 .icon img {
-    width: 60%;
+    width: 10rem;
+    height: 10rem;
     display: block;
     margin: 0 auto;
-    /* filter: invert(14%) sepia(95%) saturate(6069%) hue-rotate(30deg) brightness(10%) contrast(117%);  */
-
-    /* filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(280deg); */
 }
 .icon {
     background-color: #0000;

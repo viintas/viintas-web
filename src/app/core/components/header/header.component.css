@@ -56,6 +56,7 @@ nav{
 }
 .navbar .menu .item > a:hover{
     color: var(--primary-color-light);
+    cursor: pointer;
 }
 /*Botón nav*/
 .checkbtn{
