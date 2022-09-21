@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const materialModules = [
@@ -28,7 +29,8 @@ const materialModules = [
   ReactiveFormsModule,
   MatStepperModule,
   MatIconModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatTooltipModule
 ];
 
 @NgModule({

@@ -64,7 +64,20 @@
 .shopping-products .price-card-product {
     font-size: 1.2rem;
 }
-
+.icon-info{
+    font-size: 1.5rem;
+    float: right;
+    color: var(--primary-color-dark);
+}
+::ng-deep .mat-tooltip{
+    font-size: 1rem ;
+    background-color: var(--primary-color) ;
+    box-shadow: 2px 2px 2px rgb(156, 156, 156);
+}
+.animate__rubberBand{
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
 /*Close Button*/
 .img-close {
     background-color: rgb(148, 112, 112);
@@ -248,9 +261,6 @@
         max-width: 25rem;
         margin: auto;
     }
-    /* .shopping-card{
-        padding-top: 3rem;
-    } */
 }
 @media only screen and (max-width:885px) and (min-width:768px) {
     .shopping-products, .shopping-price {

@@ -25,6 +25,8 @@
                             </div>
                             <div class="col-7 content-card-product">
                                 <p class="text-card-product">{{ product.fields.name }}</p>
+                                <mat-icon *ngIf="product.fields.amount > 5" [matTooltip]="'Agregaste más de 5 productos, antes el precio de este articulo era $' + product.fields.pvp_unitary"
+                                    class="icon-info animate__animated animate__rubberBand">assignment_late</mat-icon>
                                 <p class="price-card-product">{{ actualPrice(product) | PriceNumberFormat}}</p>
                                 <hr>
                                 <div class="count-content">
