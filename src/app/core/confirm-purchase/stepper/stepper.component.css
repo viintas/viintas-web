@@ -1,5 +1,5 @@
 .stepper {
-    width: 35rem;
+    width: 50rem;
     border-radius: 1rem;
     display: block;
     margin: 5rem auto;
@@ -49,13 +49,13 @@
 }
 @media (max-width:800px){
     .stepper{
-        width: 70%;
+        width: 80%;
         padding: 1rem;
     }
 }
 @media (min-width:1200px){
     .stepper{
-        width: 35rem;
+        /* width: 50rem; */
         padding: 1rem;
     }
 }

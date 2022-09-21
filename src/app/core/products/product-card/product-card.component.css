@@ -70,10 +70,6 @@
     .card_:hover .see-more {
         transform: translate(13rem, -14rem);
     }
-
-    .card-button {
-        padding: 0 1rem;
-    }
 }
 
 @media (min-width:500px) {

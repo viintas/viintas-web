@@ -3,13 +3,37 @@
         <p class="title-list-products">Lista de productos</p>
         <div class="col-12 content-list">
             <div class="product" *ngFor="let product of listProducts; let i=index">
-                <img class="img-product" [src]="product.fields.image[0].url" [alt]="product.fields.name" srcset="">
+                <img class="img-product" [src]="product.fields.image[0].url" [alt]="product.fields.name">
                 <div class="content-text">
                     <p class="name-product">{{ product.fields.name }}</p>
-                    <p class="price-product">{{ product.fields.pvp_unitary }}</p>
-                    <p class="cant-product">x{{ product.fields.amount }}</p>
+                    <div class="sub-content-text">
+                        <p class="price-product">${{ product.fields.pvp_unitary }}</p>
+                        <p class="cant-product">x{{ product.fields.amount }}</p>
+                    </div>
                 </div>
-                <img (click)="alertDelete()" class="close" src="./../../../../assets/img/message-square-x-solid-24.png" alt="">
+                <div class="container-count">
+                    <div class="count-button">
+                        <button class="button" (click)="subtractAmount(i)">
+                            <svg width="25" height="25" viewBox="0 0 25 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect class="icon-fill" y="6" width="6" height="25" transform="rotate(-90 0 6)" />
+                            </svg>
+                        </button>
+                        <span class="count">
+                            <input type="number" name="cantProduct" [(ngModel)]="product.fields.amount"
+                                (blur)="changeProductAmount(i)">
+                        </span>
+                        <button class="button" (click)="addAmount(i)">
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect class="icon-fill" x="9" width="6" height="25" fill="#c71c81" />
+                                <rect class="icon-fill" y="16" width="6" height="25" transform="rotate(-90 0 16)" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <img (click)="alertDelete(i)" class="close" src="./../../../../assets/img/message-square-x-solid-24.png"
+                    alt="">
             </div>
         </div>
     </div>
